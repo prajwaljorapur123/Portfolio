@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Responsive Portfolio</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Lobster&family=Russo+One&family=Secular+One&family=Square+Peg&display=swap" rel="stylesheet">
+
+
+</head>
+
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        text-decoration: none;
+        list-style: none;
+        box-sizing: border-box;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .navbar {
+        background: #fff;
+        padding: 20px;
+        font-family: 'Ubuntu', sans-serif;
+        position: fixed;
+        z-index: 999;
+        width: 100%;
+        height: 80px;
+        box-shadow: 0 8px 8px -4px rgba(0, 0, 0, 0.2);
+    }
+    
+    .navbar .logo {
+        font-family: 'Archivo Black', sans-serif;
+        padding: 0 40px;
+        color: aliceblue;
+        font-weight: 600;
+        font-size: 32px;
+        margin-left: 25px;
+    }
+    
+    .navbar .logo a {
+        color: #BD1E51;
+    }
+    
+    .navbar .logo a span {
+        color: black;
+    }
+    
+    .navbar .menu li a {
+        display: block;
+        font-size: 20px;
+        margin-left: 10px;
+        color: #6F7378;
+        font-weight: 600;
+        transition: all 0.5s ease;
+        border: none;
+    }
+    
+    .navbar .menu li {
+        display: inline-block;
+    }
+    
+    .navbar .menu li a:hover {
+        transform: scale(1.1);
+        color: black;
+        box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12), 0px 2px 4px -1px rgba(0, 0, 0, 0.2);
+    }
+    
+    .navbar .maxwidth {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .menu-btn {
+        color: #6F7378;
+        cursor: pointer;
+        font-size: 28px;
+        display: none;
+        border: solid;
+        padding: 5px;
+    }
+    
+    section {
+        padding: 100px 0;
+    }
+    
+    .home {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("laptop4.jpg");
+        background-position: center;
+        background-size: cover;
+        height: 100vh;
+        width: 100%;
+    }
+    
+    .home .maxwidth {
+        margin: auto 0 auto 80px;
+    }
+    
+    .home .home_content {
+        margin-top: 150px;
+        display: flex;
+    }
+    
+    .home .home_content .row2 img {
+        width: 100%;
+    }
+    
+    .home .text {
+        width: 100%;
+    }
+    
+    .home .text .text1 {
+        color: #fff;
+        font-size: 30px;
+        font-weight: 600;
+        font-family: 'Ubuntu', sans-serif;
+    }
+    
+    .home .text .text2 {
+        color: #fff;
+        font-size: 70px;
+        font-weight: 600;
+        font-family: 'Caveat Brush', cursive;
+        margin-top: 15px;
+    }
+    
+    .home .text .text3 {
+        color: #fff;
+        font-size: 30px;
+        font-weight: 600;
+        font-family: 'Ubuntu', sans-serif;
+        margin-top: 15px;
+    }
+    
+    .home .text .text3 span {
+        background: #BD1E51;
+        color: white;
+        padding: 5px;
+        border-radius: 6px;
+    }
+    
+    .home .text a {
+        border: 2px chocolate solid;
+        color: #fff;
+        background: chocolate;
+        font-size: 20px;
+        padding: 10px 30px;
+        font-weight: 600;
+        margin-top: 18px;
+        margin-left: 20px;
+        display: inline-block;
+        border-radius: 6px;
+        font-family: 'Ubuntu', sans-serif;
+        transition: all 0.5s ease;
+    }
+    
+    .home .text a:hover {
+        background: transparent;
+    }
+    
+    .about {
+        height: 100vh;
+        height: auto;
+    }
+    
+    .about .maxwidth {
+        margin: auto 150px auto 150px;
+    }
+    
+    .about .title {
+        color: #fff;
+        text-align: center;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 40px;
+        font-weight: 600;
+        text-shadow: 2px 2px 4px #000000;
+        height: 50px;
+        width: 250px;
+        margin: auto;
+        border-radius: 6px;
+        border: 3px #425664 solid;
+    }
+    
+    .about .aboutcontent {
+        display: flex;
+        margin: 80px auto auto auto;
+        width: 100%;
+        background: #F6F4F2;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+    
+    .about .aboutcontent .image {
+        background: #F6F4F2;
+        border: 15px solid #425664;
+        height: 500px;
+        position: relative;
+        width: 1000px;
+    }
+    
+    .about .aboutcontent .image img {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        margin-top: 60px;
+        margin-left: 50px;
+        border-radius: 50%;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        filter: grayscale(var(--value, 100%));
+    }
+    
+    .about .aboutcontent .text .text1 {
+        font-size: 30px;
+        font-family: 'Ubuntu', sans-serif;
+        margin-top: 20px;
+        color: #425664;
+        font-weight: 600;
+    }
+    
+    .about .aboutcontent .text .text1 span {
+        color: #EF0D50;
+    }
+    
+    .about .aboutcontent .text p {
+        text-align: justify;
+        font-size: 18px;
+        color: #150734;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        border-radius: 8px;
+        margin-top: 10px;
+        line-height: 40px;
+    }
+    
+    .about .aboutcontent .text {
+        font-family: 'Roboto', sans-serif;
+        margin-left: 150px;
+        padding: 50px;
+    }
+    
+    .about .aboutcontent .text a {
+        display: inline-block;
+        border: #C6AD8F 4px solid;
+        border-radius: 6px;
+        color: white;
+        background: #C6AD8F;
+        padding: 10px;
+        margin-top: 15px;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 600;
+        transition: all 0.5s ease;
+    }
+    
+    .about .aboutcontent .text a:hover {
+        background: transparent;
+        color: #425664;
+    }
+    
+    .skills {
+        height: auto;
+        width: 100%;
+        background: #E6E6E3;
+    }
+    
+    .skills .title {
+        color: #fff;
+        text-align: center;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 40px;
+        font-weight: 600;
+        text-shadow: 2px 2px 4px #000000;
+        height: 50px;
+        width: 200px;
+        margin: auto;
+        border-radius: 6px;
+        border: 3px #373833 solid;
+    }
+    
+    .skills .maxwidth {
+        margin: 70px 80px auto 80px;
+    }
+    
+    .skills .skillscontent .coloumn_1 h1 {
+        text-align: center;
+        font-family: 'poppins', sans-serif;
+        font-weight: 600;
+        color: #000032;
+    }
+    
+    .skills .skillscontent .coloumn_1 p {
+        text-align: center;
+        margin: 20px;
+        padding: 10px;
+        font-size: 16px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        background: white;
+        color: black;
+    }
+    
+    .skills .skillscontent .coloumn_2 {
+        display: flex;
+        margin-top: 40px;
+    }
+    
+    .skills .skillscontent .coloumn_2 .coloumn_3,
+    .skills .skillscontent .coloumn_2 .coloumn_4 {
+        display: flex;
+    }
+    
+    .skills .skillscontent .coloumn_2 .coloumn_3 .img1 {
+        width: 100%;
+        margin-left: 25px;
+        margin-right: 25px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+        background: white;
+    }
+    
+    .skills .skillscontent .coloumn_2 .coloumn_3 .img2,
+    .skills .skillscontent .coloumn_2 .coloumn_4 .img3,
+    .skills .skillscontent .coloumn_2 .coloumn_4 .img4 {
+        width: 100%;
+        margin-left: 25px;
+        margin-right: 25px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+        background: white;
+    }
+    
+    .skills .skillscontent .coloumn_2 .coloumn_3 .img1 img,
+    .skills .skillscontent .coloumn_2 .coloumn_3 .img2 img,
+    .skills .skillscontent .coloumn_2 .coloumn_4 .img3 img,
+    .skills .skillscontent .coloumn_2 .coloumn_4 .img4 img {
+        height: 200px;
+        width: 100%;
+    }
+    
+    .skills .skillscontent .coloumn_2 .coloumn_3 .img1 h1,
+    .skills .skillscontent .coloumn_2 .coloumn_3 .img2 h1,
+    .skills .skillscontent .coloumn_2 .coloumn_4 .img3 h1,
+    .skills .skillscontent .coloumn_2 .coloumn_4 .img4 h1 {
+        text-align: center;
+        font-family: 'poppins', sans-serif;
+        color: #373833;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .project {
+        height: auto;
+        width: 100%;
+        background: linear-gradient(#1F3044, #646C79);
+    }
+    
+    .project .title {
+        color: #fff;
+        text-align: center;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 40px;
+        font-weight: 600;
+        text-shadow: 2px 2px 4px #000000;
+        height: 50px;
+        width: 200px;
+        margin: auto;
+        border-radius: 6px;
+        border: 3px #646C79 solid;
+    }
+    
+    .project .maxwidth {
+        margin: 70px 80px auto 80px;
+    }
+    
+    .project .projectcontent {
+        display: flex;
+    }
+    
+    .project .projectcontent .row1,
+    .project .projectcontent .row2,
+    .project .projectcontent .row3 {
+        display: flex;
+        width: 100%;
+    }
+    
+    .project .projectcontent .row1 a,
+    .project .projectcontent .row2 a,
+    .project .projectcontent .row3 a {
+        background: white;
+        display: inline-block;
+        height: 120px;
+        width: 100%;
+        color: #1F3044;
+        font-family: 'poppins', sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        text-align: center;
+        padding: 30px;
+        margin: 10px;
+        box-shadow: 2px 2px 4px #000000;
+        transition: all 0.5s ease;
+        border-radius: 6px;
+    }
+    
+    .project .projectcontent .row1 a:hover,
+    .project .projectcontent .row2 a:hover,
+    .project .projectcontent .row3 a:hover {
+        transform: scale(1.1);
+        background: #FB9039;
+        color: white;
+    }
+    
+    .project .projectwork {
+        margin: 30px;
+    }
+    
+    .project .projectwork .text {
+        font-family: 'poppins', sans-serif;
+        font-weight: 600;
+        margin: 20px;
+        color: #FB9039;
+    }
+    
+    .project .projectwork p {
+        text-align: justify;
+        margin: 20px;
+        font-size: 16px;
+        font-weight: 400;
+        color: white;
+        font-family: 'Roboto', sans-serif;
+        background: #646C79;
+        padding: 20px;
+        border-radius: 2px;
+    }
+    
+    .project .projectwork .fa {
+        font-size: 80px;
+        margin-left: 50px;
+        color: #FB9039;
+    }
+    
+    .project .projectwork a {
+        text-align: center;
+        color: #FB9039;
+    }
+    
+    .contact {
+        height: auto;
+        width: 100%;
+    }
+    
+    .contact .title {
+        color: #fff;
+        text-align: center;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 40px;
+        font-weight: 600;
+        text-shadow: 2px 2px 4px #000000;
+        height: 50px;
+        width: 250px;
+        margin: auto;
+        border-radius: 6px;
+        border: 3px #1D2228 solid;
+    }
+    
+    .contact .maxwidth {
+        margin: 70px 100px auto 100px;
+    }
+    
+    .contact .contactcontent {
+        display: flex;
+    }
+    
+    .contact .contactcontent .contactcontent_2 {
+        background: #1D2228;
+        width: 100%;
+        padding: 30px;
+        height: 450px;
+    }
+    
+    .contact .contactcontent_1 {
+        width: 100%;
+        height: auto;
+    }
+    
+    .contact .contactcontent_1 iframe {
+        width: 100%;
+        filter: invert(100%);
+    }
+    
+    .contact .contactcontent_2 h2 {
+        font-family: sans-serif;
+        margin: 6px;
+        color: #E1E2E2;
+    }
+    
+    .contact .contactcontent_2 form .firstrow {
+        display: flex;
+        width: 100%;
+    }
+    
+    .contact .contactcontent_2 form .firstrow .name,
+    .contact .contactcontent_2 form .firstrow .email {
+        width: 100%;
+    }
+    
+    .contact .contactcontent_2 form .firstrow .email {
+        margin-left: 6px;
+    }
+    
+    .contact .contactcontent_2 form {
+        margin-right: 12px;
+    }
+    
+    .contact .contactcontent_2 form .firstrow input {
+        height: 50px;
+        width: 100%;
+        padding: 6px;
+        margin: 6px;
+        border: lightgray 1px solid;
+        font-size: 20px;
+        border-radius: 6px;
+        outline: none;
+    }
+    
+    .contact .contactcontent_2 form .field input {
+        height: 50px;
+        width: 100%;
+        padding: 6px;
+        margin: 6px;
+        border: #1D2228 1px solid;
+        font-size: 20px;
+        border-radius: 6px;
+        outline: none;
+    }
+    
+    .contact .contactcontent_2 form .text_field textarea {
+        width: 100%;
+        padding: 6px;
+        margin: 6px;
+        border: #1D2228 1px solid;
+        font-size: 20px;
+        border-radius: 6px;
+        height: 150px;
+        outline: none;
+    }
+    
+    .contact .contactcontent_2 form button {
+        margin: 6px;
+        width: 120px;
+        height: 40px;
+        border: #FB8122 2px solid;
+        background: #FB8122;
+        color: white;
+        font-family: sans-serif;
+        font-weight: 600;
+    }
+    
+    .contact .contactcontent_2 form button:hover {
+        background: transparent;
+        color: #FB8122;
+    }
+    
+    .contact .contactinfo {
+        display: flex;
+        margin-top: 10px;
+    }
+    
+    .contact .contactinfo .contactinfo1,
+    .contact .contactinfo .contactinfo2 {
+        display: flex;
+        width: 100%;
+    }
+    
+    .contact .contactinfo .row1 .info {
+        display: flex;
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    .contact .contactinfo .row1 {
+        width: 100%;
+        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+        padding: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    
+    .contact .contactinfo .row1 .fa {
+        font-size: 15px;
+        padding: 15px;
+        border-radius: 50%;
+        color: #1D2228;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px 0px, rgba(0, 0, 0, 0.23) 0px 3px 6px 0px;
+    }
+    
+    .contact .contactinfo .row1 .info h2 {
+        font-size: 10px;
+        font-family: sans-serif;
+        font-weight: 600;
+    }
+    
+    .contact .contactinfo .row1 .info p {
+        font-size: 10px;
+        font-weight: 500;
+        text-align: center;
+        margin-left: 5px;
+    }
+    
+    .others {
+        background: #101025;
+        width: 100%;
+        height: auto;
+    }
+    
+    .others .title {
+        color: #fff;
+        text-align: center;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 40px;
+        font-weight: 600;
+        text-shadow: 2px 2px 4px blue;
+        height: 50px;
+        width: 200px;
+        margin: auto;
+        border-radius: 6px;
+        border: 2px white solid;
+    }
+    
+    .others .maxwidth {
+        margin: 0 100px auto 100px;
+    }
+    
+    .others .otherscontent {
+        display: flex;
+        margin-top: 50px;
+        width: 100%;
+    }
+    
+    .others .otherscontent1 {
+        display: flex;
+        width: 100%;
+        margin-right: 50px;
+    }
+    
+    .others .otherscontent .education .row1 .rowsub {
+        display: flex;
+    }
+    
+    .others .education .title1 {
+        color: white;
+        font-family: sans-serif;
+        font-weight: 600;
+        font-size: 35px;
+        text-align: center;
+    }
+    
+    .others .education {
+        width: 100%;
+    }
+    
+    .others .personeldetails .title1 {
+        color: white;
+        font-family: sans-serif;
+        font-weight: 600;
+        font-size: 35px;
+    }
+    
+    .others .education .row1 {
+        background: #101535;
+        margin-top: 20px;
+        width: 100%;
+        padding: 10px 80px 10px 80px;
+        border-radius: 6px;
+    }
+    
+    .others .education .row1 .text1 {
+        text-align: center;
+        color: white;
+        font-size: 20px;
+        font-weight: 600;
+        font-family: sans-serif;
+    }
+    
+    .others .education .row1 .text2 {
+        text-align: center;
+        color: white;
+        font-size: 18px;
+        font-weight: 500;
+        font-family: sans-serif;
+        margin-top: 10px;
+    }
+    
+    .others .education .row1 .text3 {
+        text-align: center;
+        color: white;
+        font-size: 18px;
+        font-weight: 500;
+        font-family: sans-serif;
+        margin-top: 10px;
+    }
+    
+    .others .education .row1 .rowsub .text3,
+    .others .education .row1 .rowsub .text4 {
+        text-align: center;
+        color: white;
+        font-size: 15px;
+        font-weight: 600;
+        font-family: sans-serif;
+        margin-top: 5px;
+        margin-left: 10px;
+    }
+    
+    .others .otherscontent .personeldetails {
+        margin-left: 50px;
+        width: 100%;
+    }
+    
+    .others .otherscontent .personeldetails .row2 {
+        display: flex;
+        margin-top: 20px;
+        width: 100%;
+        background: #101535;
+        padding: 10px;
+        border-radius: 6px;
+    }
+    
+    .others .personeldetails .row2 .text {
+        color: white;
+        font-size: 15px;
+        font-weight: 600;
+        font-family: sans-serif;
+    }
+    
+    .others .personeldetails .row2 .text1 {
+        color: white;
+        font-size: 10px;
+        font-weight: 500;
+        font-family: sans-serif;
+        margin-top: 4px;
+        margin-left: 10px;
+    }
+    
+    .others .declaration {
+        width: 100%;
+        margin-top: 20px;
+    }
+    
+    .others .declaration .title1 {
+        color: white;
+        font-family: sans-serif;
+        font-weight: 600;
+        font-size: 35px;
+        text-align: center;
+    }
+    
+    .others .declaration .text {
+        color: white;
+        text-align: center;
+        font-family: sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        margin-top: 20px;
+        background: #101535;
+        padding: 10px;
+        border-radius: 6px;
+    }
+    
+    .others .personeldetails .icons {
+        color: white;
+        font-size: 20px;
+        margin-left: 5px;
+    }
+    
+    .others .personeldetails .icons .fa {
+        margin-left: 15px;
+        margin-top: 10px;
+        color: #101535;
+        background: white;
+        border-radius: 50%;
+        font-size: 20px;
+        padding: 10px;
+        transition: all 0.5s ease;
+    }
+    
+    .others .personeldetails .icons .fa:hover {
+        background: crimson;
+        color: white;
+    }
+    
+    .others .hobbies .title1 {
+        color: white;
+        font-family: sans-serif;
+        font-weight: 600;
+        font-size: 35px;
+    }
+    
+    .others .hobbies {
+        width: 100%;
+    }
+    
+    .others .hobbies .text1 {
+        color: white;
+        text-align: justify;
+        font-family: sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        margin-top: 20px;
+        background: #101535;
+        padding: 10px;
+        border-radius: 6px;
+    }
+    
+    footer {
+        background: #111;
+        padding: 20px 23px;
+        color: #fff;
+    }
+    
+    footer span a {
+        color: #0D5BE1;
+        text-decoration: none;
+    }
+    
+    footer span a:hover {
+        text-decoration: underline;
+    }
+    
+    @media (max-width: 1300px) {
+        .about .aboutcontent .text p {
+            line-height: 25px;
+        }
+        .about .aboutcontent .text {
+            margin-left: 200px;
+        }
+    }
+    
+    @media (max-width: 1104px) {
+        .hobbies .row1 .hobbiesrow1 .hobbiefirst img,
+        .hobbies .row1 .hobbiesrow1 .hobbiesecond img,
+        .hobbies .row1 .hobbiesrow img {
+            margin: auto;
+        }
+        .about .aboutcontent {
+            display: block;
+        }
+        .about .aboutcontent .image {
+            width: 350px;
+        }
+        .about .aboutcontent .image img {
+            margin-left: 200px;
+        }
+        .about .aboutcontent .text {
+            margin: 20px;
+        }
+    }
+    
+    @media(max-width:952px) {
+        .navbar .menu.active {
+            left: 0;
+        }
+        .home .text .text2 {
+            font-size: 70px;
+        }
+        .menu-btn {
+            display: block;
+            z-index: 999;
+        }
+        .menu {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: #222;
+            top: 80px;
+            left: -100%;
+            text-align: center;
+            transition: all 0.5s ease;
+            padding-top: 80px;
+        }
+        .menu-btn i.active::before {
+            content: "\f00d";
+        }
+        .navbar .menu li {
+            display: block;
+        }
+        .navbar .menu li a {
+            display: inline-block;
+            transition: all 0.5s ease;
+            margin: 20px 0;
+            border: none;
+            padding: 0;
+        }
+        .navbar .menu li a:hover {
+            color: white;
+            box-shadow: none;
+        }
+        .about .aboutcontent {
+            display: block;
+        }
+        .about .maxwidth {
+            margin: 20px 100px auto 100px;
+        }
+        .about .aboutcontent .image {
+            width: 400px;
+            position: relative;
+        }
+        .about .aboutcontent .image img {
+            width: 300px;
+            height: 300px;
+            margin-left: 200px;
+            position: absolute;
+        }
+        .about .aboutcontent .text {
+            margin: 10px;
+        }
+        .about .title {
+            margin-top: -50px;
+        }
+        .project .projectcontent {
+            display: block;
+        }
+        .project .projectcontent .row1 a,
+        .project .projectcontent .row2 a,
+        .project .projectcontent .row3 a {
+            width: 100%;
+            margin: 10px;
+        }
+        .project .projectwork {
+            margin-left: -25px;
+            margin-right: -25px;
+            margin-top: 10px;
+        }
+        .hobbies .row1 .hobbiesrow1 .hobbiefirst img,
+        .hobbies .row1 .hobbiesrow1 .hobbiesecond img,
+        .hobbies .row1 .hobbiesrow img {
+            margin: auto;
+        }
+        .contact .contactinfo .contactinfo1,
+        .contact .contactinfo .contactinfo2 {
+            display: block;
+        }
+        .others .otherscontent {
+            display: block;
+        }
+        .others .hobbies {
+            margin-left: 0;
+            margin-top: 20px;
+        }
+        .others .hobbies .title1 {
+            text-align: center;
+        }
+        .skills .skillscontent .coloumn_2 {
+            display: block;
+        }
+        .skills .skillscontent .coloumn_2 .coloumn_4 {
+            margin-top: 20px;
+        }
+    }
+    
+    @media (max-width: 800px) {
+        .about .aboutcontent .image {
+            width: 280px;
+        }
+        .about .aboutcontent .image img {
+            width: 250px;
+            height: 250px;
+            margin-left: 150px;
+        }
+    }
+    
+    @media (max-width: 690px) {
+        .navbar .logo {
+            margin-left: -10px;
+        }
+        .home .maxwidth {
+            margin: auto 0 auto 50px;
+        }
+        .home .home_content {
+            margin-top: 70px;
+        }
+        .home .text .text2 {
+            font-size: 60px;
+        }
+        .home .text .text1 {
+            font-size: 20px;
+        }
+        .home .text .text3 {
+            font-size: 25px;
+        }
+        .about .aboutcontent .image {
+            width: 250px;
+        }
+        .about .aboutcontent .image img {
+            width: 250px;
+            height: 250px;
+            margin-left: 80px;
+        }
+        .skills .skillscontent .coloumn_2 .img1 img,
+        .skills .skillscontent .coloumn_2 .img2 img,
+        .skills .skillscontent .coloumn_2 .img3 img,
+        .skills .skillscontent .coloumn_2 .img4 img {
+            height: 100px;
+            width: 100%;
+        }
+        .skills .skillscontent .coloumn_2,
+        .skills .skillscontent .coloumn_2,
+        .skills .skillscontent .coloumn_2,
+        .skills .skillscontent .coloumn_2 {
+            margin: 0 -50px 0 -50px;
+        }
+        .skills .skillscontent .coloumn_1 p {
+            margin: 10px -50px 10px -50px;
+        }
+        .project .projectwork {
+            margin-left: -25px;
+            margin-right: -25px;
+            margin-top: 10px;
+        }
+        .project .projectcontent .row1 a,
+        .project .projectcontent .row2 a,
+        .project .projectcontent .row3 a {
+            padding: 10px;
+            height: 60px;
+        }
+        .hobbies .row1 .hobbiesrow1 .hobbiefirst img,
+        .hobbies .row1 .hobbiesrow1 .hobbiesecond img,
+        .hobbies .row1 .hobbiesrow img {
+            margin: auto;
+        }
+        .contact .contact_content {
+            display: inline-block;
+        }
+        .contact .contactcontent {
+            display: block;
+        }
+        .contact .contactinfo {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .contact .contactinfo .row1 {
+            margin-left: 0;
+        }
+        .contact .maxwidth {
+            margin: 70px 10px 10px 10px;
+        }
+        .others .declaration {
+            display: block;
+        }
+        .others .maxwidth {
+            margin: 70px 20px auto 20px;
+        }
+    }
+    
+    @media (max-width: 580px) {
+        .about .aboutcontent .image {
+            width: 200px;
+        }
+        .about .aboutcontent .image img {
+            width: 200px;
+            height: 200px;
+            margin-left: 50px;
+        }
+    }
+    
+    @media (max-width: 500px) {
+        .navbar .logo {
+            margin-left: -35px;
+            font-size: 30px;
+        }
+        .home .maxwidth {
+            margin: auto 0 auto 30px;
+        }
+        .home .home_content {
+            margin-top: 90px;
+        }
+        .home .text .text1 {
+            font-size: 15px;
+        }
+        .home .text .text2 {
+            font-size: 50px;
+        }
+        .home .text .text3 {
+            font-size: 20px;
+        }
+        .about .maxwidth {
+            margin: 20px 50px auto 50px;
+        }
+        .about .aboutcontent .image {
+            width: 200px;
+        }
+        .about .aboutcontent .image img {
+            width: 200px;
+            height: 200px;
+            margin-left: 30px;
+        }
+        .skills .skillscontent .coloumn_2 {
+            display: inline-block;
+            margin: auto;
+        }
+        .skills .skillscontent .coloumn_1 p {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        .skills .maxwidth {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        .skills .skillscontent .coloumn_2 .img1 img,
+        .skills .skillscontent .coloumn_2 .img2 img,
+        .skills .skillscontent .coloumn_2 .img3 img,
+        .skills .skillscontent .coloumn_2 .img4 img {
+            width: 100%;
+        }
+        .skills .skillscontent .coloumn_2 .img1 h1,
+        .skills .skillscontent .coloumn_2 .img2 h1,
+        .skills .skillscontent .coloumn_2 .img3 h1,
+        .skills .skillscontent .coloumn_2 .img4 h1 {
+            text-align: center;
+            font-family: sans-serif;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        .project .projectcontent .row1 a,
+        .project .projectcontent .row2 a,
+        .project .projectcontent .row3 a {
+            padding: 20px;
+            height: 60px;
+        }
+        .project .projectcontent .row1,
+        .project .projectcontent .row2,
+        .project .projectcontent .row3 {
+            display: block;
+            margin: auto;
+        }
+        .project .projectwork {
+            margin-left: -25px;
+            margin-right: -25px;
+            margin-top: 10px;
+        }
+        .project .projectwork .text {
+            margin: auto;
+            margin-bottom: 5px;
+        }
+        .project .projectwork p {
+            width: 100%;
+            padding: 20px;
+            height: auto;
+            margin: 0;
+        }
+        .hobbies .row1 {
+            display: block;
+        }
+        .hobbies .row1 .hobbiesrow1 {
+            display: block;
+        }
+        .hobbies .row1 .hobbiesrow1 .hobbiefirst img,
+        .hobbies .row1 .hobbiesrow1 .hobbiesecond img,
+        .hobbies .row1 .hobbiesrow img,
+        .hobbies .row2 img,
+        .hobbies .row1 .hobbie1 img {
+            height: 100px;
+            width: 100%;
+            margin: auto;
+        }
+        .contact .contactinfo {
+            margin: 10px;
+        }
+        .contact .contactcontent {
+            display: block;
+        }
+        .contact .maxwidth {
+            margin: 70px 10px 10px 10px;
+        }
+        .others .otherscontent {
+            display: block;
+        }
+        .others .maxwidth {
+            margin: 0 80px auto 80px;
+        }
+        .others .education .row1 {
+            padding: 10px;
+        }
+        .others .declaration {
+            margin-left: 0;
+        }
+        .others .otherscontent .personeldetails {
+            margin-left: 0;
+        }
+        .others .personeldetails .title,
+        .others .education .title,
+        .others .declaration .title {
+            font-size: 20px;
+        }
+        .others .otherscontent1 {
+            display: block;
+        }
+        .others .otherscontent1 .personeldetails {
+            margin-top: 20px;
+        }
+    }
+    
+    @media(max-width:400px) {
+        .contact .contactinfo {
+            display: block;
+        }
+    }
+    
+    @media (max-width: 340px) {
+        .navbar .logo {
+            margin-left: -40px;
+        }
+        .contact .contactinfo {
+            display: block;
+        }
+        .about .aboutcontent .image {
+            height: 350px;
+            width: 120px;
+        }
+        .about .aboutcontent .image img {
+            width: 150px;
+            height: 150px;
+        }
+        .about .aboutcontent .text {
+            padding: 10px;
+        }
+        .others .maxwidth {
+            margin: 0 20px auto 20px;
+        }
+        .skills .skillscontent .coloumn_2 .coloumn_3,
+        .skills .skillscontent .coloumn_2 .coloumn_4 {
+            display: block;
+        }
+        .skills .skillscontent .coloumn_2 .coloumn_3 .img1 img,
+        .skills .skillscontent .coloumn_2 .coloumn_3 .img2 img,
+        .skills .skillscontent .coloumn_2 .coloumn_4 .img3 img,
+        .skills .skillscontent .coloumn_2 .coloumn_4 .img4 img {
+            height: 100px;
+        }
+        .menu-btn {
+            font-size: 20px;
+            padding: 2px;
+        }
+    }
+</style>
+
+<body>
+    <nav class="navbar">
+
+
+
+
+        <div class="maxwidth">
+            <div class="logo"><a href="">Prajwal<span>Creation</span></a></div>
+
+            <ul class="menu">
+                <li>
+                    <a href="#home" class="menu-btn">Home</a></li>
+                <li>
+                    <a href="#about" class="menu-btn">About</a></li>
+                <li>
+                    <a href="#skills" class="menu-btn">Skills</a></li>
+                <li>
+                    <a href="#project" class="menu-btn">Project</a></li>
+
+                <li>
+                    <a href="#contact" class="menu-btn">Contact</a></li>
+
+                <li>
+                    <a href="#others" class="menu-btn">Others</a></li>
+            </ul>
+
+            <div class="menu-btn">
+                <i class="fa fa-bars"></i>
+            </div>
+
+
+        </div>
+
+    </nav>
+
+
+
+
+    <section class="home" id="home">
+
+        <div class="maxwidth">
+            <div class="home_content">
+                <div class="text">
+                    <h2 class="text1">Hello,my name is </h2>
+                    <h1 class="text2">PRAJWAL JORAPUR</h1>
+                    <p class="text3">And I'm <span>web developer</span> </p>
+                    <a href="">Hire Me</a>
+                </div>
+
+                <!-- <div class="row2">
+                    <img src="laptop2.jpg" alt="">
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+
+    <section class="about" id="about">
+        <div class="maxwidth">
+            <h1 class="title">About Me</h1>
+            <div class="aboutcontent">
+                <div class="image">
+                    <img src="prajwal1.jpg" class="prajwal">
+                </div>
+
+                <div class="text">
+                    <h1 class="text1">
+                        Hello I'm <span>Web Developer</span>
+                    </h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat ex nihil atque earum pariatur? In necessitatibus ducimus delectus earum nemo suscipit optio eligendi dolores, fugiat autem exercitationem accusantium dicta nesciunt
+                        fuga, quisquam molestias quidem asperiores consectetur vel architecto et unde iure distinctio. Accusantium quod cumque ipsum. Sint, quidem in neque perferendis consequatur, ut non porro possimus dolorem soluta voluptas ducimus.
+
+                    </p>
+                    <a href="PrajwaljorapurCV.pdf" download>Download CV</a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+    <section class="skills" id="skills">
+        <h1 class="title">Skills</h1>
+        <div class="maxwidth">
+            <div class="skillscontent">
+                <div class="coloumn_1">
+                    <h1 class="text1">My Skills and Knowledge</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nihil eos atque inventore harum ducimus libero, odit temporibus sed deleniti corrupti sint hic deserunt impedit et quas dolores quis aut officia quos illo sit in dolor
+                        veniam. Culpa est commodi reiciendis molestias. Libero neque fuga sunt accusamus tempore incidunt porro eveniet, culpa nostrum a quo necessitatibus perspiciatis aliquid laudantium sed!</p>
+                </div>
+
+                <div class="coloumn_2">
+                    <div class="coloumn_3">
+                        <div class="img1">
+                            <img src="python1.jpg">
+                            <h1>Python</h1>
+                        </div>
+
+                        <div class="img2">
+                            <img src="script1.jpg">
+                            <h1>Javascript</h1>
+                        </div>
+                    </div>
+
+                    <div class="coloumn_4">
+                        <div class="img3">
+                            <img src="html1.jpg">
+                            <h1>Html</h1>
+                        </div>
+
+                        <div class="img4">
+                            <img src="css1.jpg">
+                            <h1>CSS</h1>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="project" id="project">
+        <h1 class="title">Projects</h1>
+        <div class="maxwidth">
+            <div class="projectcontent">
+
+                <div class="projectwork">
+                    <h1 class="text">My projects and Work</h1>
+                    <p>BSC HARDWARE(Web Application)-The main objective of the project is develop a web application for client BSC Hardware's,Which allows the customer to purchase products such as plywood's,Roofing Sheets,steel pipes,Sanitary Items and Tiles.The
+                        applications is completely dynamic and keep track of all information such as,customer details,product details,stock details,invoice,and generation of reports at one centralized system.
+                    </p>
+                    <a href=""><i class="fa fa-github"></i>GitHub</a>
+                </div>
+
+
+                <div class="project1">
+                    <div class="row1">
+                        <a href="" class="projects1">ColorBox</a>
+                        <a href="" class="projects1">ColorBox</a>
+                        <a href="" class="projects1">ColorBox</a>
+                    </div>
+
+                    <div class="row2">
+                        <a href="" class="projects1">ColorBox</a>
+                        <a href="" class="projects1">ColorBox</a>
+                        <a href="" class="projects1">ColorBox</a>
+                    </div>
+
+                    <div class="row3">
+                        <a href="" class="projects1">ColorBox</a>
+                        <a href="" class="projects1">ColorBox</a>
+                        <a href="" class="projects1">ColorBox</a>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <section class="contact" id="contact">
+        <h1 class="title">Contact Me</h1>
+        <div class="maxwidth">
+
+            <div class="contactcontent">
+
+                <div class="contactcontent_1">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61526.34584265156!2d74.96264621363915!3d15.463084149915437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb8cd62d889aba7%3A0x5a4f2144717bcf70!2sDharwad%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1659894191372!5m2!1sen!2sin"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+
+                <div class="contactcontent_2">
+
+                    <h2>Message Me</h2>
+
+                    <form action="#">
+
+                        <div class="firstrow">
+                            <div class="name">
+                                <input type="text" placeholder="name" required>
+                            </div>
+                            <div class="email">
+                                <input type="email" placeholder="email" required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <input type="text" placeholder="subject">
+
+                        </div>
+
+                        <div class="text_field">
+                            <textarea cols="30" rows="10" placeholder="Comment..."></textarea>
+                        </div>
+
+                        <div class="button">
+                            <button type="submit">submit</button>
+                        </div>
+                    </form>
+                </div>
+
+
+
+            </div>
+
+
+            <div class="contactinfo">
+
+                <div class="contactinfo1">
+                    <div class="row1">
+                        <i class="fa fa-user"></i>
+                        <div class="info">
+                            <h2>Name: </h2>
+                            <p>
+                                PrajwalJorapur
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="row1">
+                        <i class="fa fa-location-arrow"></i>
+                        <div class="info">
+                            <h2>Address:</h2>
+                            <p>
+                                GandhiChowk,Dharwad
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="contactinfo2">
+                    <div class="row1">
+                        <i class="fa fa-phone"></i>
+                        <div class="info">
+                            <h2>Phone:</h2>
+                            <p>6360504064</p>
+                        </div>
+                    </div>
+
+                    <div class="row1">
+                        <i class="fa fa-envelope"></i>
+                        <div class="info">
+                            <h2>Email:</h2>
+                            <p>prajwaljorapur40@gmail.com</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+
+    <section class="others" id="others">
+        <h1 class="title">Others</h1>
+        <div class="maxwidth">
+            <div class="otherscontent">
+
+
+                <div class="otherscontent1">
+
+                    <div class="education">
+                        <h1 class="title1">Education</h1>
+                        <div class="row1">
+                            <h1 class="text1">
+                                2016
+                            </h1>
+                            <h2 class="text2">Karnataka High School</h2>
+
+                            <h2 class="text3">SSLC || <span>68.96%</span> </h2>
+
+
+                        </div>
+
+                        <div class="row1">
+                            <h1 class="text1">
+                                2018
+                            </h1>
+                            <h2 class="text2">SMPU collage</h2>
+
+
+                            <h2 class="text3">PUC || <span>68.93%</span> </h2>
+
+
+                        </div>
+
+                        <div class="row1">
+                            <h1 class="text1">
+                                2021
+                            </h1>
+                            <h2 class="text2">JSS SMI UG and PG studies</h2>
+
+                            <h2 class="text3">BSC(CS) || <span>72.52%</span></h2>
+
+
+                        </div>
+                    </div>
+
+
+                    <div class="personeldetails">
+                        <h1 class="title1">Personel Details</h1>
+                        <div class="row2">
+                            <h2 class="text">Full name : </h2>
+                            <p class="text1">PrajwalKumar Vilas Jorapur</p>
+                        </div>
+
+                        <div class="row2">
+                            <h2 class="text">Gender : </h2>
+                            <p class="text1">Male</p>
+                        </div>
+
+                        <div class="row2">
+                            <h2 class="text">Nationality : </h2>
+                            <p class="text1">Indian</p>
+                        </div>
+
+                        <div class="row2">
+                            <h2 class="text">Langauges : </h2>
+                            <p class="text1">Kannada , Hindi , English</p>
+                        </div>
+
+                        <div class="row2">
+                            <h2 class="text">DOB : </h2>
+                            <p class="text1">07-12-1999</p>
+                        </div>
+
+
+                        <div class="icons">
+                            <a href=""><i class="fa fa-instagram"></i></a>
+                            <a href=""><i class="fa fa-youtube"></i></a>
+                            <a href=""><i class="fa fa-facebook"></i></a>
+                            <a href=""><i class="fa fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="otherscontent2">
+                    <div class="hobbies">
+                        <h1 class="title1">Hobbies</h1>
+                        <h2 class="text1">Cricket </h2>
+                        <h2 class="text1">Chess </h2>
+                        <h2 class="text1">Movie Watching</h2>
+                        <h2 class="text1">Editing</h2>
+                        <h2 class="text1">SocialMedia Executive</h2>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="declaration">
+                <h1 class="title1">Declaration</h1>
+                <p class="text">I hereby declare that all the above details are true and correct to the best of my knowledge</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <span>created by <a href="#">prajwal Creations</a> | <span class="far fa-copyright"></span>2022 All rights reserved</span>
+    </footer>
+
+
+    <script>
+        $(document).ready(function() {
+            $('.menu-btn').click(function() {
+                $('.navbar .menu').toggleClass("active")
+                $('.menu-btn i').toggleClass("active")
+            });
+        });
+    </script>
+
+
+
+</body>
+
+</html>
